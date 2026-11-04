@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【每日綜合日報】總經防守思維與泰鼎-KY 泰國廠轉單效益評估 - 個人財金知識庫</title>
+    <style>
+        :root {
+            --bg-color: #F9F8F6;
+            --card-bg: #FFFFFF;
+            --text-primary: #2C3E50;
+            --text-muted: #7F8C8D;
+            --accent-amber: #E67E22;
+            --accent-blue: #3498DB;
+            --border-color: #EAEAEA;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* 導覽與返回首頁 */
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--text-primary);
+        }
+
+        /* 報告頭部 Header */
+        header {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .report-tag {
+            background: #2C3E50;
+            color: #FFF;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        /* 今日高階決策交會點摘要 */
+        .summary-box {
+            background: #FEF9E7;
+            border-left: 5px solid var(--accent-amber);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        .summary-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #B7950B;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-list {
+            padding-left: 18px;
+            font-size: 15px;
+        }
+
+        .summary-list li {
+            margin-bottom: 8px;
+        }
+
+        /* 章節區塊 */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 數據表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: var(--bg-color);
+            font-weight: 600;
+        }
+
+        /* Podcast 時間軸 */
+        .timeline {
+            border-left: 2px solid var(--border-color);
+            padding-left: 16px;
+            margin-left: 8px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -22px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+
+        .time-stamp {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .time-content {
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* 名詞解釋小卡 */
+        .glossary-card {
+            background: #F4F6F7;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="../index.html" class="nav-back">← 返回知識庫首頁</a>
+
+    <header>
+        <div class="report-meta">
+            <span class="report-tag">DAILY REPORT</span>
+            <span>2026-11-04</span>
+            <span>分類：#PODCAST #泰鼎KY #每日總經 #心法</span>
+        </div>
+        <h1>【每日綜合日報】總經防守思維與泰鼎-KY 泰國廠轉單效益評估</h1>
+    </header>
+
+    <!-- 高階決策交會點摘要 -->
+    <div class="summary-box">
+        <div class="summary-title">💡 今日財經交會點摘要 (Daily Insight Synthesis)</div>
+        <ul class="summary-list">
+            <li><strong>宏觀總經與政策</strong>：游庭皓指出聯準會降息預期放緩，美債殖利率回升至 4.2% 高點，高估值科技股面臨短線修整壓力，資產配置應提升防守型資產比重。</li>
+            <li><strong>市場投資心法</strong>：股癌提醒在盤勢高檔震盪時，勿將話題熱度誤認為實際獲利能力。投資人應檢視持股公司是否具備實質訂單與能見度，避免盲目追高。</li>
+            <li><strong>個股實體動態</strong>：泰鼎-KY (4927) 受益於中美地緣政治與「中國+1」供應鏈轉移趨勢，泰國三廠產能承接全球伺服器與車用 PCB 轉單，中長期營運利基持續累積。</li>
+        </ul>
+    </div>
+
+    <!-- 泰鼎-KY 專體深討 -->
+    <section class="section-card">
+        <h2 class="section-title">🏢 泰鼎-KY (4927) 個股營運與產業追蹤</h2>
+        <p>隨著非中國製造（China+1）成為全球電路板產業標準，泰鼎-KY 作為泰國最大的 PCB 製造商，正迎來產能結構優化的關鍵期。</p>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>指標項目</th>
+                    <th>最新數據</th>
+                    <th>產業趨勢與評估</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>月營收 (最近期)</td>
+                    <td>11.85 億元 (MoM +3.2%)</td>
+                    <td>受惠車用與網通客戶拉貨，營收小幅回溫。</td>
+                </tr>
+                <tr>
+                    <td>泰國廠區擴產</td>
+                    <td>三廠逐步投產</td>
+                    <td>自動化程度提高，產能利用率朝 75% 邁進。</td>
+                </tr>
+                <tr>
+                    <td>產品組合</td>
+                    <td>高多層板比重提升</td>
+                    <td>伺服器板與車用電子比重持續增加。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="glossary-card">
+            <strong>🔍 財經 Wiki 小字典：中國+1 (China+1)</strong><br>
+            指企業在保持中國製造業務的同時，將部分產能轉移至其他國家（如泰國、越南），以分散地緣政治風險及關稅衝擊。
+        </div>
+    </section>
+
+    <!-- Podcast 精華摘要 -->
+    <section class="section-card">
+        <h2 class="section-title">🎙️ Podcast 節目精華與觀點整理</h2>
+        
+        <h3 style="font-size: 15px; color: var(--accent-blue); margin-bottom: 12px;">【游庭皓的財經皓角】總經盤勢觀點</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-stamp">02:15 - 通膨與利率走勢</div>
+                <div class="time-content">美債殖利率反彈，市場對年底連續降息預期降溫，短線資金偏向保守觀望。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-stamp">10:40 - 台股資金流向</div>
+                <div class="time-content">外資在期貨空單維持高位，現貨市場轉為選擇性布局防守型高股息與低估值個股。</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 15px; color: var(--accent-amber); margin: 24px 0 12px 0;">【股癌 Gooaye】市場心法與個股點評</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-stamp">05:30 - 高檔震盪操作心法</div>
+                <div class="time-content">強勢股回檔時要觀察量能是否失控，急跌往往是檢視個股基本面的好時機，切忌追漲殺跌。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-stamp">18:20 - 電子零組件與供應鏈</div>
+                <div class="time-content">東南亞 PCB 聚落成形，相關建廠與自動化設備商短中期實質受益。</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Generated by AI Agent following AGENTS.md • Personal Financial Knowledge Base</p>
+    </footer>
+</div>
+
+</body>
+</html>
