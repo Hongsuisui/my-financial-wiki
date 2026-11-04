@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人財金知識庫 | Personal Finance Wiki</title>
+    <style>
+        :root {
+            --bg-color: #F9F8F6;
+            --card-bg: #FFFFFF;
+            --text-primary: #2C3E50;
+            --text-muted: #7F8C8D;
+            --accent-amber: #E67E22;
+            --accent-blue: #3498DB;
+            --accent-green: #2ECC71;
+            --border-color: #EAEAEA;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.04);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Noto Sans TC", "PingFang TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* 頂部 Header */
+        header {
+            margin-bottom: 32px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .site-badge {
+            display: inline-block;
+            background: #2C3E50;
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* 泰鼎-KY 儀表板 */
+        .dashboard-section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .dashboard-title {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--accent-amber);
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 4px 0;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .positive { color: #E74C3C; } /* 台股習慣紅漲綠跌 */
+        .neutral { color: var(--text-muted); }
+
+        /* 標籤過濾按鈕區 */
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .tag-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--text-primary);
+            color: #FFF;
+            border-color: var(--text-primary);
+        }
+
+        /* 今日焦點推播卡片 */
+        .push-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F4F6F7 100%);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .push-badge {
+            display: inline-block;
+            background: var(--accent-amber);
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .push-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .insight-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .insight-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .insight-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-amber);
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        /* 歷史報告列表 */
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .report-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .report-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .report-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .report-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .report-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tag-chip {
+            font-size: 11px;
+            background: var(--bg-color);
+            color: var(--text-muted);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* 名詞字典卡片區 */
+        .wiki-section {
+            margin-top: 48px;
+            background: #EBF5FB;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid #AED6F1;
+        }
+
+        .wiki-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2471A3;
+            margin-bottom: 12px;
+        }
+
+        .wiki-terms {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .term-item {
+            background: #FFF;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #2C3E50;
+            border: 1px solid #D4E6F1;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 頂部標頭 -->
+    <header>
+        <span class="site-badge">AUTOMATED LLM WIKI</span>
+        <h1>個人財金知識庫</h1>
+        <p class="subtitle">自動追蹤 泰鼎-KY (4927) 個股動態 • 游庭皓財經皓角 • 股癌 Gooaye</p>
+    </header>
+
+    <!-- 泰鼎-KY 個股儀表板 -->
+    <section class="dashboard-section" id="tai-ding-dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                📊 泰鼎-KY (4927) 個股監控儀表板
+            </div>
+            <span style="font-size: 12px; color: var(--text-muted);">自動即時連動</span>
+        </div>
+        <div class="dashboard-grid">
+            <div class="metric-card">
+                <div class="metric-label">最近月營收 (億元)</div>
+                <div class="metric-value">11.85</div>
+                <div class="metric-change positive">MoM +3.2% | YoY -1.5%</div>
+            </div>
+            <div class="metric-card" style="border-left-color: var(--accent-blue);">
+                <div class="metric-label">泰國三廠產能利用率</div>
+                <div class="metric-value">75%</div>
+                <div class="metric-change neutral">穩定回升中</div>
+            </div>
+            <div class="metric-card" style="border-left-color: var(--accent-green);">
+                <div class="metric-label">關鍵產品比重</div>
+                <div class="metric-value">伺服器/車用 42%</div>
+                <div class="metric-change neutral">結構優化中</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 今日推播焦點 -->
+    <section class="push-card" id="latest-push">
+        <span class="push-badge">⚡ 今日 AI 自動推播 (2026-11-04)</span>
+        <h2 class="push-title">每日財經交會點摘要 (Daily Insight Synthesis)</h2>
+        <ul class="insight-list">
+            <li class="insight-item"><strong>總經動態 (游庭皓)</strong>：聯準會降息預期降溫，美債殖利率反彈，短線資金偏向防守型個股。</li>
+            <li class="insight-item"><strong>市場心法 (股癌)</strong>：面對震盪盤切忌盲目追高，留意伺服器供應鏈下半年拉貨實質貢獻。</li>
+            <li class="insight-item"><strong>泰鼎-KY 個股</strong>：東盟 PCB 供應鏈移轉效益顯現，泰國產能承接轉單優勢逐漸擴大。</li>
+        </ul>
+    </section>
+
+    <!-- 標籤動態過濾 -->
+    <div class="filter-section">
+        <button class="tag-btn active" onclick="filterReports('ALL')">全部報告</button>
+        <button class="tag-btn" onclick="filterReports('PODCAST')">#PODCAST</button>
+        <button class="tag-btn" onclick="filterReports('泰鼎KY')">#泰鼎KY</button>
+        <button class="tag-btn" onclick="filterReports('每日總經')">#每日總經</button>
+        <button class="tag-btn" onclick="filterReports('心法')">#心法</button>
+    </div>
+
+    <!-- 歷史報告列表 -->
+    <main class="report-grid" id="report-container">
+        <!-- 範例卡片 1 -->
+        <a href="reports/2026-11-04-report.html" class="report-card" data-tags="PODCAST 泰鼎KY 每日總經 心法">
+            <div>
+                <div class="report-date">2026-11-04</div>
+                <div class="report-title">【每日綜合日報】總經防守思維與泰鼎-KY 泰國廠轉單效益評估</div>
+            </div>
+            <div class="report-tags">
+                <span class="tag-chip">#PODCAST</span>
+                <span class="tag-chip">#泰鼎KY</span>
+                <span class="tag-chip">#每日總經</span>
+                <span class="tag-chip">#心法</span>
+            </div>
+        </a>
+    </main>
+
+    <!-- 財經 Wiki 名詞字典卡片 -->
+    <section class="wiki-section">
+        <div class="wiki-title">📖 財經知識庫字典 (Finance Glossary)</div>
+        <div class="wiki-terms">
+            <span class="term-item"><strong>PCB</strong>：印刷電路板</span>
+            <span class="term-item"><strong>東盟供應鏈</strong>：東南亞製造基地轉移</span>
+            <span class="term-item"><strong>MoM / YoY</strong>：月增率 / 年增率</span>
+            <span class="term-item"><strong>產能利用率</strong>：工廠實際產出比例</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>Managed by AGENTS.md • Automatically Generated & Deployed via GitHub Pages</p>
+    </footer>
+</div>
+
+<script>
+    // 標籤篩選功能
+    function filterReports(tag) {
+        const buttons = document.querySelectorAll('.tag-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const cards = document.querySelectorAll('.report-card');
+        cards.forEach(card => {
+            if (tag === 'ALL') {
+                card.style.display = 'flex';
+            } else {
+                const tags = card.getAttribute('data-tags');
+                if (tags && tags.includes(tag)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
