@@ -1,0 +1,42 @@
+name: 每日財金知識庫自動更新 (Daily Financial Update)
+
+on:
+  schedule:
+    # cron 格式: 分 時 日 月 星期 (UTC 時間 00:00 等於台灣時間早上 08:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允許手動點擊按鈕觸發執行
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # 賦予自動 Commit 上傳變更的權限
+
+    steps:
+      - name: 檢出專案程式碼
+        uses: actions/checkout@v4
+
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安裝依賴套件
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-genai
+
+      - name: 執行 AI 自動生成腳本
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/daily_update.py
+
+      - name: 自動 Commit 並 Push 更新回 GitHub
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "auto: 🤖 AI 自動更新每日報告 (${{ env.TODAY }})"
+          git push
