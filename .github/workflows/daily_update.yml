@@ -2,16 +2,15 @@ name: 每日財金知識庫自動更新 (Daily Financial Update)
 
 on:
   schedule:
-    # 台灣時間每天早上 09:00 (UTC 01:00)
-    - cron: '0 1 * * *'
-  workflow_dispatch: # 允許手動點擊觸發
+    - cron: '0 1 * * *' # 台灣時間每天早上 09:00 (UTC 01:00)
+  workflow_dispatch: # 支援手動觸發按鈕
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: write # 賦予 GitHub Actions 寫入與 Push 權限
 
     steps:
       - name: 檢出專案程式碼
